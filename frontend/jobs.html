@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CareerNest</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+  <header class="main-header">
+    <div class="container header-flex">
+      <a href="index.html" class="logo">CareerNest</a>
+
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="jobs.html">Careers</a></li>
+          <li><a href="About.html">AboutUs</a></li>
+        </ul>
+      </nav>
+
+      <a href="apply.html" class="btn-apply">Apply Now</a>
+
+      <button class="mobile-toggle" id="menuToggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="jobs-page">
+    <div class="container">
+      <div class="filters">
+        <select id="department-filter">
+          <option value="">All Departments</option>
+          <option value="engineering">Engineering</option>
+          <option value="design">Design</option>
+          <option value="marketing">Marketing</option>
+        </select>
+        <select id="location-filter">
+          <option value="">All Locations</option>
+          <option value="remote">Remote</option>
+          <option value="Bangalore">Bangalore</option>
+          <option value="Chennai">Chennai</option>
+        </select>
+      </div>
+
+      <div class="jobs-list" id="jobs-container">
+        <div class="jobs-list" id="jobs-container">
+          <!-- Stylish Card 1 -->
+          <div class="modern-card">
+            <img src="https://images.pexels.com/photos/392018/pexels-photo-392018.jpeg" alt="Frontend Developer" />
+            <div class="card-body">
+              <h3>Frontend Developer</h3>
+              <p class="para1">We're looking for an experienced frontend developer to join our team.</p>
+              <a href="job-detail.html?id=1" class="card-btn">Apply Now</a>
+            </div>
+          </div>
+
+          <!-- Stylish Card 2 -->
+          <div class="modern-card">
+            <img src="https://images.pexels.com/photos/326576/pexels-photo-326576.jpeg" alt="UI/UX Designer" />
+            <div class="card-body">
+              <h3>UI/UX Designer</h3>
+              <p class="para1">Create intuitive and attractive user interfaces across platforms.</p>
+              <a href="job-detail.html?id=2" class="card-btn">Apply Now</a>
+            </div>
+          </div>
+
+          <!-- Stylish Card 3 -->
+          <div class="modern-card">
+            <img src="https://images.pexels.com/photos/4065624/pexels-photo-4065624.jpeg" alt="Marketing Manager" />
+            <div class="card-body">
+              <h3>Marketing Manager</h3>
+              <p class="para1">Lead our marketing campaigns and brand presence across channels.</p>
+              <a href="job-detail.html?id=3" class="card-btn">Apply Now</a>
+            </div>
+          </div>
+
+          <!-- Stylish Card 4 -->
+          <div class="modern-card">
+            <img src="https://images.pexels.com/photos/4226140/pexels-photo-4226140.jpeg" alt="Backend Developer" />
+            <div class="card-body">
+              <h3>Backend Developer</h3>
+              <p class="para1">We are seeking a skilled backend engineer proficient in Node.js and databases.</p>
+              <a href="job-detail.html?id=4" class="card-btn">Apply now</a>
+            </div>
+          </div>
+
+
+          <!-- Stylish Card 5 -->
+          <div class="modern-card">
+            <img src="https://images.pexels.com/photos/288477/pexels-photo-288477.jpeg" alt="SDE" />
+            <div class="card-body">
+              <h3>SDE</h3>
+              <p class="para1">We are seeking a skilled Software developer engineer proficient in Java and databases.
+              </p>
+              <a href="job-detail.html?id=4" class="card-btn">Apply now</a>
+            </div>
+          </div>
+
+
+
+          <!-- Stylish Card 6 -->
+          <div class="modern-card">
+            <img
+              src="https://media.istockphoto.com/id/2193065344/photo/diverse-team-discussing-business-in-a-modern-meeting-room.jpg?s=2048x2048&w=is&k=20&c=JCk5cVBUS4-l2YT5zqEdNV-qCrSDUDIELngy1VGcVfg="
+              alt="Non-Technicalr" />
+            <div class="card-body">
+              <h3>Non-Technical</h3>
+              <p class="para1">We are seeking a skilled Non-Technical proficient in skills.</p>
+              <a href="job-detail.html?id=4" class="card-btn">Apply now</a>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>CareerNest</h3>
+          <p>Building innovative solutions for a better tomorrow.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="jobs.html">Careers</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <address>Hyderabad<br>Madhapur</address>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 CareerNest. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('mainNav');
+
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+  </script>
+</body>
+
+</html>
