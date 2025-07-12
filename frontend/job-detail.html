@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CareerNest</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="container header-flex">
+            <!-- Logo -->
+            <a href="index.html" class="logo">CareerNest</a>
+
+            <!-- Navigation Menu -->
+            <nav class="main-nav" id="mainNav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="jobs.html">Careers</a></li>
+                    <li><a href="About.html">About Us</a></li>
+                </ul>
+            </nav>
+
+            <!-- Actions -->
+            <div class="header-actions">
+                <a href="apply.html" class="btn-apply">Apply Now</a>
+                <a href="/admin/admin-login.html" class="btn-login">Login</a>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-toggle" id="menuToggle" aria-label="Toggle Menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="job-detail">
+        <div class="container">
+            <div class="job-detail-card">
+                <img src="https://images.pexels.com/photos/6471/woman-hand-smartphone-desk.jpg" alt="Job workspace" />
+                <div class="card-body">
+                    <div id="job-detail-content">Job details will be loaded here via JavaScript</div>
+                    <a href="apply.html" class="card-btn">Apply Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>CareerNest</h3>
+                    <p>Building innovative solutions for a better tomorrow.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="jobs.html">Careers</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <address>Hyderabad<br>Madhapur</address>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CareerNest. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const jobId = parseInt(urlParams.get('id'));
+        const jobs = [
+            {
+                id: 1,
+                title: "Frontend Developer",
+                department: "Engineering",
+                location: "Remote",
+                type: "Full-time",
+                description: "We're looking for a skilled frontend developer to join our team.",
+                responsibilities: ["Develop new user-facing features", "Build reusable code and libraries", "Optimize for speed", "Collaborate with team members"],
+                requirements: ["3+ years experience", "Proficient in HTML, CSS, JavaScript", "React experience", "Strong problem-solving skills"]
+            },
+            {
+                id: 2,
+                title: "UI/UX Designer",
+                department: "Design",
+                location: "Remote",
+                type: "Full-time",
+                description: "Design beautiful and intuitive interfaces for our platform.",
+                responsibilities: ["User research", "Prototyping", "Collaboration", "Design reviews"],
+                requirements: ["2+ years experience", "Figma/Sketch/Adobe XD", "Strong visual design sense", "Team communication"]
+            },
+
+            {
+                id: 3,
+                title: "Marketing Manager",
+                department: "Engineering",
+                location: "Remote",
+                type: "Full-time",
+                description: "Lead our marketing campaigns and brand presence across channels.",
+                responsibilities: ["Develop new user-facing features", "Build reusable code and libraries", "Optimize application for maximum speed and scalability", "Collaborate with team members"],
+                requirements: ["5+ years of frontend development experience", "Proficient in HTML, CSS, JavaScript", "Experience with React or similar frameworks", "Strong problem-solving skills"]
+            },
+            {
+                id: 4,
+                title: "Backend Developer",
+                department: "Engineering",
+                location: "Remote",
+                type: "Full-time",
+                description: "We are seeking a skilled backend engineer proficient in Node.js and databases.",
+                responsibilities: ["Develop new user-facing features", "Build reusable code and libraries", "Optimize application for maximum speed and scalability", "Collaborate with team members"],
+                requirements: ["2+ years of frontend development experience", "Proficient in HTML, CSS, JavaScript", "Experience with React or similar frameworks", "Strong problem-solving skills"]
+            },
+            {
+                id: 5,
+                title: "SDE",
+                department: "Engineering",
+                location: "Remote",
+                type: "Full-time",
+                description: "We are seeking a skilled Software developer engineer proficient in Java and databases.",
+                responsibilities: ["Develop new user-facing features", "Build reusable code and libraries", "Optimize application for maximum speed and scalability", "Collaborate with team members"],
+                requirements: ["2+ years of frontend development experience", "Proficient in HTML, CSS, JavaScript", "Experience with React or similar frameworks", "Strong problem-solving skills"]
+            },
+            {
+                id: 6,
+                title: "Non-Technical",
+                department: "Engineering",
+                location: "Remote",
+                type: "Full-time",
+                description: "We are seeking a skilled Non-Technical proficient in skills.",
+                responsibilities: ["Develop new user-facing features", "Build reusable code and libraries", "Optimize application for maximum speed and scalability", "Collaborate with team members"],
+                requirements: ["2+ years of frontend development experience", "Proficient in HTML, CSS, JavaScript", "Experience with React or similar frameworks", "Strong problem-solving skills"]
+            }
+        ];
+
+        const job = jobs.find(j => j.id === jobId);
+        const container = document.getElementById('job-detail-content');
+        if (job) {
+            container.innerHTML = `
+        <h2>${job.title}</h2>
+        <div class="job-meta">
+          <span>${job.department}</span>
+          <span>${job.location}</span>
+          <span>${job.type}</span>
+        </div>
+        <p>${job.description}</p>
+        <div class="job-section">
+          <h3>Responsibilities</h3>
+          <ul>${job.responsibilities.map(resp => `<li>${resp}</li>`).join('')}</ul>
+        </div>
+        <div class="job-section">
+          <h3>Requirements</h3>
+          <ul>${job.requirements.map(req => `<li>${req}</li>`).join('')}</ul>
+        </div>
+      `;
+            localStorage.setItem('applyingForJob', jobId);
+        } else {
+            container.innerHTML = '<p>Job not found. <a href="jobs.html">Browse all jobs</a></p>';
+        }
+
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('mainNav');
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+
+
+        document.getElementById("applicationForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const form = e.target;
+
+
+            const formData = {
+                fullName: form.fullName.value,
+                email: form.email.value,
+                phone: form.phone.value,
+                resume: form.resume.value,
+                coverLetter: form.coverLetter.value,
+                linkedin: form.linkedin.value,
+                portfolio: form.portfolio.value
+            };
+
+            try {
+                const response = await fetch("http://localhost:5000/api/apply", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert("✅ Application submitted successfully!");
+                    form.reset();
+                    window.location.href = "jobs.html";
+                } else {
+                    alert("❌ Failed to submit application. Please try again.");
+                }
+
+            } catch (error) {
+                console.error("Error:", error);
+                alert("❌ Server error. Please check your connection.");
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CareerNest</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="container header-flex">
+            <!-- Logo -->
+            <a href="index.html" class="logo">CareerNest</a>
+
+            <!-- Navigation Menu -->
+            <nav class="main-nav" id="mainNav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="jobs.html">Careers</a></li>
+                    <li><a href="About.html">About Us</a></li>
+                </ul>
+            </nav>
+
+            <!-- Actions -->
+            <div class="header-actions">
+                <a href="apply.html" class="btn-apply">Apply Now</a>
+                <a href="/admin/admin-login.html" class="btn-login">Login</a>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-toggle" id="menuToggle" aria-label="Toggle Menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="application-section">
+        <div class="form-wrapper">
+            <div class="form-left">
+                <img src="https://images.pexels.com/photos/4439457/pexels-photo-4439457.jpeg" alt="Job Illustration" />
+                <h2>Let’s Build Your Career with Us!</h2>
+                <p>Apply now and be part of something great.</p>
+            </div>
+
+            <div class="form-right">
+                <h3>Job Application</h3>
+                <form id="applicationForm" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="fullName">Full Name*</label>
+                        <input type="text" id="fullName" name="fullName" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email*</label>
+                        <input type="email" id="email" name="email" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone" />
+                    </div>
+                    <div class="form-group">
+                        <label for="resume">Resume/CV*</label>
+                        <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="coverLetter">Cover Letter</label>
+                        <textarea id="coverLetter" name="coverLetter" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="linkedin">LinkedIn Profile</label>
+                        <input type="url" id="linkedin" name="linkedin" />
+                    </div>
+                    <div class="form-group">
+                        <label for="portfolio">Portfolio Website</label>
+                        <input type="url" id="portfolio" name="portfolio" />
+                    </div>
+                    <button type="submit" class="btn-submit">Submit Application</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>CareerNest</h3>
+                    <p>Building innovative solutions for a better tomorrow.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="jobs.html">Careers</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <address>Hyderabad<br />Madhapur</address>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CareerNest. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("applicationForm");
+
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                const formData = new FormData(form);
+
+                fetch('http://localhost:5000/api/submit', {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert("✅ Application submitted successfully!");
+                        window.location.href = "jobs.html";
+                    })
+                    .catch(error => {
+                        alert("❌ Failed to submit application.");
+                        console.error("Error:", error);
+                    });
+            });
+        });
+    </script>
+
+</body>
+
+</html>

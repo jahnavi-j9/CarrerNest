@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="./css/admin.css" />
+</head>
+
+
+<body>
+
+  <header class="admin-header">
+    <div class="container">
+      <h1>CareerNest Admin</h1>
+      <nav>
+        <a href="./admin.html">Dashboard</a>
+        <a href="./manage-jobs.html">Manage Jobs</a>
+        <a href="./applicants.html">Applicants</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="admin-container">
+    <h2>All Applications</h2>
+    <ul id="appList"></ul>
+  </main>
+
+  <footer class="admin-footer">
+    <div class="container">
+      <p>&copy; 2025 CareerNest Admin Panel. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    async function fetchApplications() {
+      const res = await fetch('http://localhost:5000/admin/applications');
+      const data = await res.json();
+
+      const list = document.getElementById('appList');
+      list.innerHTML = '';
+
+      data.data.forEach(app => {
+        const li = document.createElement('li');
+        li.textContent = `${app.name} - ${app.email} - ${app.resume}`;
+        list.appendChild(li);
+      });
+    }
+
+    fetchApplications();
+  </script>
+</body>
+
+</html>

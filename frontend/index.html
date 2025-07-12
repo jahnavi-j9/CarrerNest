@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerNest</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="container header-flex">
+            <!-- Logo -->
+            <a href="index.html" class="logo">CareerNest</a>
+
+            <!-- Navigation Menu -->
+            <nav class="main-nav" id="mainNav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="jobs.html">Careers</a></li>
+                    <li><a href="About.html">About Us</a></li>
+                </ul>
+            </nav>
+
+            <!-- Actions -->
+            <div class="header-actions">
+                <a href="apply.html" class="btn-apply">Apply Now</a>
+                <a href="/admin/admin-login.html" class="btn-login">Login</a>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-toggle" id="menuToggle" aria-label="Toggle Menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Build the future with us</h1>
+                <p class="lead">Join our team of innovators and help shape tomorrow's technology today.</p>
+                <a href="jobs.html" class="btn btn-primary">
+                    View Open Positions <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.pexels.com/photos/392018/pexels-photo-392018.jpeg" alt="Team working together">
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="job-categories-modern">
+        <div class="container">
+            <h2>Explore Opportunities</h2>
+            <div class="category-cards">
+                <a href="jobs.html?dept=engineering" class="category-card-modern">
+                    <i class="fas fa-code"></i>
+                    <h3>Engineering</h3>
+                    <p>12 open positions</p>
+                </a>
+
+                <a href="jobs.html?dept=design" class="category-card-modern">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>Design</h3>
+                    <p>5 open positions</p>
+                </a>
+
+                <a href="jobs.html?dept=marketing" class="category-card-modern">
+                    <i class="fas fa-bullhorn"></i>
+                    <h3>Marketing</h3>
+                    <p>8 open positions</p>
+                </a>
+
+                <a href="jobs.html?dept=sales" class="category-card-modern">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Sales</h3>
+                    <p>6 open positions</p>
+                </a>
+
+                <a href="jobs.html?dept=product" class="category-card-modern">
+                    <i class="fas fa-box-open"></i>
+                    <h3>Product Management</h3>
+                    <p>4 open positions</p>
+                </a>
+
+                <a href="jobs.html?dept=hr" class="category-card-modern">
+                    <i class="fas fa-user-friends"></i>
+                    <h3>Human Resources</h3>
+                    <p>3 open positions</p>
+                </a>
+
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits-modern">
+        <div class="container">
+            <h2>Our Benefits</h2>
+            <div class="benefit-cards">
+                <div class="benefit-card-modern">
+                    <i class="fas fa-heart"></i>
+                    <h3>Health & Wellness</h3>
+                    <p>Comprehensive medical, dental, and vision plans for you and your family.</p>
+                </div>
+                <div class="benefit-card-modern">
+                    <i class="fas fa-clock"></i>
+                    <h3>Work-Life Balance</h3>
+                    <p>Flexible work hours and remote work options to support your commitments.</p>
+                </div>
+                <div class="benefit-card-modern">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Learning & Development</h3>
+                    <p>Access to courses, certifications, and workshops to grow your skills.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>CareerNest</h3>
+                    <p>Building innovative solutions for a better tomorrow.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="jobs.html">Careers</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <address>
+                        Hyderabad<br>
+                        Madhapur
+                    </address>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CareerNest. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        const currentPage = location.pathname.split("/").pop();
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        navLinks.forEach(link => {
+            if (link.getAttribute("href") === currentPage) {
+                link.classList.add("active");
+            }
+        });
+    </script>
+
+
+
+</body>
+
+</html>

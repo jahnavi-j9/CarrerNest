@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CareerNest</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+  <header class="main-header">
+    <div class="container header-flex">
+      <!-- Logo -->
+      <a href="index.html" class="logo">CareerNest</a>
+
+      <!-- Navigation Menu -->
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="jobs.html">Careers</a></li>
+          <li><a href="About.html">About Us</a></li>
+        </ul>
+      </nav>
+
+      <!-- Actions -->
+      <div class="header-actions">
+        <a href="apply.html" class="btn-apply">Apply Now</a>
+        <a href="/admin/admin-login.html" class="btn-login">Login</a>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-toggle" id="menuToggle" aria-label="Toggle Menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="jobs-page">
+    <div class="container">
+      <div class="filters">
+        <select id="department-filter">
+          <option value="">All Departments</option>
+          <option value="engineering">Engineering</option>
+          <option value="design">Design</option>
+          <option value="marketing">Marketing</option>
+        </select>
+        <select id="location-filter">
+          <option value="">All Locations</option>
+          <option value="remote">Remote</option>
+          <option value="Bangalore">Bangalore</option>
+          <option value="Chennai">Chennai</option>
+        </select>
+      </div>
+
+      <div class="jobs-list" id="jobs-container">
+        <!-- 🔒 Static Cards -->
+        <div class="modern-card">
+          <img src="https://images.pexels.com/photos/392018/pexels-photo-392018.jpeg" alt="Frontend Developer" />
+          <div class="card-body">
+            <h3>Frontend Developer</h3>
+            <p class="para1">We're looking for an experienced frontend developer to join our team.</p>
+            <a href="job-detail.html?id=1" class="card-btn">Apply Now</a>
+          </div>
+        </div>
+
+        <div class="modern-card">
+          <img src="https://images.pexels.com/photos/326576/pexels-photo-326576.jpeg" alt="UI/UX Designer" />
+          <div class="card-body">
+            <h3>UI/UX Designer</h3>
+            <p class="para1">Create intuitive and attractive user interfaces across platforms.</p>
+            <a href="job-detail.html?id=2" class="card-btn">Apply Now</a>
+          </div>
+        </div>
+
+        <!-- ✅ Removed <div id="dynamic-jobs"></div> -->
+      </div>
+    </div>
+  </main>
+
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>CareerNest</h3>
+          <p>Building innovative solutions for a better tomorrow.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="jobs.html">Careers</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <address>Hyderabad<br>Madhapur</address>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 CareerNest. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ✅ Updated Dynamic Job Injection Script -->
+<script>
+  async function fetchJobs() {
+    const container = document.getElementById('jobs-container');
+
+    // Static jobs
+    container.innerHTML = `
+      <div class="modern-card">
+        <img src="https://images.pexels.com/photos/392018/pexels-photo-392018.jpeg" alt="Frontend Developer" />
+        <div class="card-body">
+          <h3>Frontend Developer</h3>
+          <p class="para1">We're looking for an experienced frontend developer to join our team.</p>
+          <a href="job-detail.html?id=1" class="card-btn">Apply Now</a>
+        </div>
+      </div>
+
+      <div class="modern-card">
+        <img src="https://images.pexels.com/photos/326576/pexels-photo-326576.jpeg" alt="UI/UX Designer" />
+        <div class="card-body">
+          <h3>UI/UX Designer</h3>
+          <p class="para1">Create intuitive and attractive user interfaces across platforms.</p>
+          <a href="job-detail.html?id=2" class="card-btn">Apply Now</a>
+        </div>
+      </div>
+    `;
+
+    // Dynamic jobs from DB
+    try {
+      const res = await fetch('http://localhost:5000/jobs/jobs');
+      const data = await res.json();
+
+      if (data.success && data.jobs.length > 0) {
+        data.jobs.forEach((job) => {
+          container.innerHTML += `
+            <div class="modern-card">
+              <img src="https://images.pexels.com/photos/4065624/pexels-photo-4065624.jpeg" alt="${job.title}" />
+              <div class="card-body">
+                <h3>${job.title}</h3>
+                <p class="para1">${job.description}</p>
+                <a href="job-detail.html?id=${job.id}" class="card-btn">Apply Now</a>
+              </div>
+            </div>
+          `;
+        });
+      }
+    } catch (error) {
+      console.error('❌ Error loading dynamic jobs:', error);
+      container.innerHTML += '<p style="color:red">❌ Error loading added jobs.</p>';
+    }
+  }
+
+  window.onload = fetchJobs;
+</script>
+
+</body>
+
+</html>
